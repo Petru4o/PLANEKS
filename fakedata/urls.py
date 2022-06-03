@@ -9,5 +9,8 @@ urlpatterns = [
     path('login/', views.LoginV.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
 
-    path('create_schema/', views.SchemaCreateView.as_view(), name='SchemaCreateView'),
+    path('create_schema/', views.SchemaCreateView.as_view(), name='create_schema'),
+    path('delete_schema/<int:pk>/', views.DeleteSchemaView.as_view(), name='delete_schema' ),
+
+    path('schema/<int:pk>/', views.SchemaDatasetView.as_view(), name='schema_dataset'),
 ]

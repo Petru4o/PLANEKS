@@ -4,7 +4,7 @@
 
 <br>
 
-<a href="{% url 'SchemaCreateView' %}">
+<a href="{% url 'create_schema' %}">
     <button type="button" class="btn btn-success">New schema</button>
 </a>
 
@@ -20,12 +20,11 @@
   <tbody>
     {% for schema in schema_list %}
     <tr>
-        <th scope="row">{{schema.schema_name}}</th>
-        <td><a href="#"><button type="button" class="btn btn-link">{{schema.schema_name }}</button></a></td>
+        <th scope="row">{{schema.id}}</th>
+        <td><a href="{% url 'schema_dataset' schema.id %}"><button type="button" class="btn btn-link">{{schema.schema_name }}</button></a></td>
         <td>{{ schema.modified }}</td>
         <td>
-            <a href="#"><button type="button" class="btn btn-link">Edit schema</button></a>
-            <a href="#">
+            <a href="{% url 'delete_schema' schema.id %}">
                 <button type="button" class="btn btn-link text-danger">Delete</button>
             </a>
         </td>

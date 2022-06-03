@@ -2,9 +2,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.forms import inlineformset_factory
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 
-from fakedata.models import Schema, Column
+from fakedata.models import Schema, Column, FakeDataset
 
 column_formset = inlineformset_factory(
             Schema, Column, fields=('column_name', 'column_type', 'order', 'min_number', 'max_number'),
@@ -52,4 +52,20 @@ class SchemaCreateView(CreateView):
             return super().form_invalid(form)
 
         return super().form_valid(form)
+
+
+class DeleteSchemaView(DeleteView):
+    model = Schema
+    success_url = reverse_lazy('home')
+    template_name = 'schema_delete.html'
+
+
+class SchemaDatasetView(ListView):
+    model = FakeDataset
+    template_name = 'schema_dataset.html'
+    context_object_name = 'schema_datasets'
+
+
+
+
 

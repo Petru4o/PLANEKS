@@ -61,6 +61,7 @@ class FakeDataset(models.Model):
 
     schema = models.ForeignKey(Schema, on_delete=models.CASCADE)
     status = models.CharField(max_length=20, choices=Status)
+    created = models.DateField(auto_now_add=True)
     rows = models.IntegerField(null=True)
 
     def __str__(self):
