@@ -3,12 +3,6 @@
 {% block content %}
 
 <h1>Data sets</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Generate data</button>
-</form>
-
 
     <table class="table">
         <thead>
@@ -36,5 +30,11 @@
         {% endfor %}
       </tbody>
     </table>
+
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Generate data</button>
+</form>
 
 {% endblock %}
