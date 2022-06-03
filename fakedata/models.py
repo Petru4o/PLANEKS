@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 
 class Schema(models.Model):
-
     Separator_choices = [
         (',', 'Comma(,)'),
         (';', 'Semicolon(;)')
@@ -25,19 +24,19 @@ class Schema(models.Model):
     def __str__(self):
         return self.schema_name
 
-class Column(models.Model):
 
+class Column(models.Model):
     Column_type_choices = [
-        ('Full name', 'full name'),
-        ('Job', 'Jjb'),
-        ('Email', 'email'),
-        ('Domain name', 'domain name'),
-        ('Phone number', 'phone number'),
-        ('Company name', 'company name'),
-        ('Text', 'text'),
-        ('Integer', 'integer'),
-        ('Address', 'address'),
-        ('Date', 'date')
+        ('Full name', 'Full name'),
+        ('Job', 'Job'),
+        ('Email', 'Email'),
+        ('Domain name', 'Domain name'),
+        ('Phone number', 'Phone number'),
+        ('Company name', 'Company name'),
+        ('Text', 'Text'),
+        ('Integer', 'Integer'),
+        ('Address', 'Address'),
+        ('Date', 'Date')
     ]
 
     column_name = models.CharField(max_length=20)
@@ -56,8 +55,8 @@ class Column(models.Model):
 
 class FakeDataset(models.Model):
     Status = [
-        ('Ready', 'ready'),
-        ('Processing', 'processing')
+        ('Ready', 'Ready'),
+        ('Processing', 'Processing')
     ]
 
     schema = models.ForeignKey(Schema, on_delete=models.CASCADE)
@@ -66,4 +65,3 @@ class FakeDataset(models.Model):
 
     def __str__(self):
         return f'{self.schema.schema_name} - {self.status}'
-
