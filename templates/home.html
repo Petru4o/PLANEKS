@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+
+<a href="#">
+    <button type="button" class="btn btn-success">New schema</button>
+</a>
+
+<table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Modified</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for schema in object_list %}
+    <tr>
+        <th scope="row">{{schema.schema_name}}</th>
+        <td><a href="#"><button type="button" class="btn btn-link">{{schema.schema_name }}</button></a></td>
+        <td>{{ schema.modified }}</td>
+        <td>
+            <a href="#"><button type="button" class="btn btn-link">Edit schema</button></a>
+            <a href="#">
+                <button type="button" class="btn btn-link text-danger">Delete</button>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
