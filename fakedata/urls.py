@@ -12,5 +12,6 @@ urlpatterns = [
     path('create_schema/', views.SchemaCreateView.as_view(), name='create_schema'),
     path('delete_schema/<int:pk>/', views.DeleteSchemaView.as_view(), name='delete_schema' ),
 
-    path('schema/<int:pk>/', views.SchemaDatasetView.as_view(), name='schema_dataset'),
+    path('schema/<int:pk>/', views.DataSetView.as_view(), name='schema_dataset'),
+
 ]
