@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Log In{% endblock %}
-
 {% block content %}
-    <div style="width: 50%; margin: 10% 40%;">
+
 <h2>Log In</h2>
-<form method="post" class="form" style="justify-content: center;">
+<form method="post" class="form">
     {% if form.errors %}
         <div class="alert alert-primary" role="alert">
             Error: Username or Password not correct!
@@ -14,8 +12,8 @@
   <div class="form-group" >
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit" class="btn btn-primary float-right">Log In</button>
+  <button type="submit" class="btn btn-primary">Log In</button>
   </div>
 </form>
-    </div>
+
 {% endblock %}

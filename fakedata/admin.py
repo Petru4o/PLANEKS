@@ -1,9 +1,8 @@
 from django.contrib import admin
 
-from .models import Schema, UserChoice, SlotChoice
-
-# Register your models here.
+from .models import Schema, FakeDataset, Column
 
 admin.site.register(Schema)
-admin.site.register(UserChoice)
-admin.site.register(SlotChoice)
+admin.site.register(FakeDataset)
+admin.site.register(Column)
+

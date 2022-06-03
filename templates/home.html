@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+
+<a href="{% url 'create_schema' %}">
+    <button type="button" class="btn btn-success">New schema</button>
+</a>
+
+<table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Modified</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for schema in schema_list %}
+    <tr>
+        <th scope="row">{{schema.id}}</th>
+        <td><a href="{% url 'schema_dataset' schema.id %}"><button type="button" class="btn btn-link">{{schema.schema_name }}</button></a></td>
+        <td>{{ schema.modified }}</td>
+        <td>
+            <a href="{% url 'delete_schema' schema.id %}">
+                <button type="button" class="btn btn-link text-danger">Delete</button>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+    <script>
+    const range_appear = (column_type) => {
+    let row = $(column_type).parents(".form-inline")
+    let from = $(row).find("[id$='range_from']")
+    let to = $(row).find("[id$='range_to']")
+    if( $(column_type).val() == "Text" || $(column_type).val() == "Integer" ) {
+        $(from).show()
+        $(to).show()
+    }
+    else {
+        $(from).hide()
+        $(to).hide()
+
+    }
+  }
+
+  $( document ).ready(function() {
+    $('#add_column').click(function() {
+        var form_idx = $('#id_column_set-TOTAL_FORMS').val();
+        $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+        $('#id_column_set-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+    });
+  $("[id$='column_type']").each(
+       function() {range_appear ($(this))}
+      )
+
+    $("[id$='column_type']").change(
+        (e) => {
+            range_appear(e.target)
+    }
+
+ )
+});
+    </script>
+
+{% endblock %}
