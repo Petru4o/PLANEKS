@@ -2,6 +2,8 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import django_heroku
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -13,7 +15,7 @@ SECRET_KEY = 'django-insecure-&mm8o-dl#@=f(2g6dj4fhij20_nv_*mc94m797z!5rygpg1iyk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['planeks-salii.heroku.com']
 
 # Application definition
 
@@ -68,8 +70,13 @@ WSGI_APPLICATION = 'PLANEKS.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ddffnqo284llg1',
+        'USER': 'pnevookzobxzun',
+        'PASSWORD': 'ccc614a6e5ee6db02dcbe1de46b9b93fd691b11191df74b9bef19679a0932d50',
+        'HOST': 'ec2-34-230-153-41.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -104,7 +111,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 
@@ -122,6 +129,7 @@ LOGOUT_REDIRECT_URL = 'login'
 
 LOGIN_URL = '/login/'
 
+django_heroku.settings(locals())
 
 
 
