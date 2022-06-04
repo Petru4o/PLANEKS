@@ -8,6 +8,6 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'PLANEKS.settings')
 
 app = Celery('PLANEKS')
 app.config_from_object('django.conf:settings', namespace='CELERY')
-app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
-                CELERY_RESULT_BACKEND=os.environ['REDIS_URL'])
+CAR_BROKER_URL = 'redis://localhost:6379'
+
 app.autodiscover_tasks(settings.INSTALLED_APPS)
