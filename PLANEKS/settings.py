@@ -33,8 +33,8 @@ INSTALLED_APPS = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://:p23be6de57eec9a7df007d07c989a78281d84cf1d34ee24abd0b6ddf5f740f20f@ec2-52-72-65-222.compute-1.amazonaws.com:15350'
+
 
 
 MIDDLEWARE = [
