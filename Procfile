@@ -1,2 +1,1 @@
-release: python manage.py migrate
-web: gunicorn planeks-salii:app
+web: gunicorn PLANEKS.wsgi & celery --app=PLANEKS worker & wait -n
